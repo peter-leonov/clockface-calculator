@@ -15,7 +15,7 @@ html, body { color: #fff; }
 
 .time-result { font-size: 65px; width: 155px; margin: 10px auto 15px; }
 
-.time-select .hours { overflow: hidden; margin-bottom: 30px; }
+.time-select .hours { overflow: hidden; margin-bottom: 20px; }
 .time-select .button { float: left; overflow: hidden; width: 54px; height: 54px; }
 .time-select .button:nth-child(6n-5),
 .time-select .button:nth-child(6n) { width: 52px; }
