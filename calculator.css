@@ -1,1 +1,20 @@
-html, body { background-color: #000; }
+body,table,
+h1,h2,h3,h4,h5,h6
+p,form,
+fieldset,legend,
+ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
+img{vertical-align:middle;}
+a{cursor:pointer;text-decoration:none;color:inherit;}
+a img{border:0;}
+input,select,textarea{font:inherit;}
+input[type="password"],
+input[type="text"]{margin:0;}
+html { background: #fff; font-family: sans-serif; }
+
+html, body { color: #000; }
+
+.time-select .button { display: inline-block; font-size: 28px; width: 30px; padding: 5px; margin: 5px; }
+.time-select .minutes .button { background-color: #eef; }
+.time-select .hours .button { background-color: #efe; }
+.time-select .hours { margin: 10px 0 20px; }
+
