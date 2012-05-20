@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru" id="index-page" class="">
+<head>
+<title>Считалочка времени</title>
+<meta name="viewport" content="width=device-width">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<style>
+
+</style>
+<body>
+
+
+
+<script>
+;(function(){
+var mCode = 'm'.charCodeAt(0)
+var html = document.documentElement
+function toggle (e)
+{
+	if (e.keyCode != mCode)
+		return
+	
+	html.classList.toggle('model')
+}
+document.addEventListener('keypress', toggle, false)
+})();
+</script>
