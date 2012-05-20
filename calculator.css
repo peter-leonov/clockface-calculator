@@ -9,12 +9,15 @@ a img{border:0;}
 input,select,textarea{font:inherit;}
 input[type="password"],
 input[type="text"]{margin:0;}
-html { background: #fff; font-family: sans-serif; }
+html { background: #000; font-family: sans-serif; }
 
-html, body { color: #000; }
+html, body { color: #fff; }
 
-.time-select .button { display: inline-block; font-size: 28px; width: 30px; padding: 5px; margin: 5px; }
-.time-select .minutes .button { background-color: #eef; }
-.time-select .hours .button { background-color: #efe; }
-.time-select .hours { margin: 10px 0 20px; }
+.time-select .button { display: inline-block; font-size: 28px; width: 54px; height: 40px; background-color: red !important; }
+.time-select .button:nth-child(6n-5),
+.time-select .button:nth-child(6n) { width: 52px; background-color: green !important; }
+.time-select .button .digit { display: block; width: 30px; height: 30px; margin: 5px; background-color: #fff; border-radius: 3px; font-size: 28px; }
+.time-select .minutes .button { color: #004; }
+.time-select .hours .button { color: #040; }
+.time-select .hours { margin: 0 0 20px; }
 
