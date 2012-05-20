@@ -13,9 +13,18 @@ html { background: #000; font-family: sans-serif; }
 
 html, body { color: #fff; }
 
-.time-select .button { display: inline-block; width: 54px; height: 54px; }
+.time-result { font-size: 65px; width: 155px; margin: 10px auto 15px; }
+
+.time-select .button { display: inline-block; overflow: hidden; width: 54px; height: 54px; }
 .time-select .button:nth-child(6n-5),
 .time-select .button:nth-child(6n) { width: 52px; }
-.time-select .button .digit { display: block; overflow: hidden; width: 45px; height: 45px; margin: 3px; background-color: #444; border-radius: 3px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; }
-.time-select .hours { margin: 0 0 20px; }
+.time-select .button .digit { display: block; width: 45px; height: 45px; margin: 3px; background-color: #444; border-radius: 3px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; }
+.time-select .button .digit.teen { text-indent: -2px; }
+.time-select .button .digit { text-shadow: 0 1px #000; }
+.time-select .button.selected .digit { color: #000; font-size: 36px; }
+.time-select .hours { margin-bottom: 30px; }
+.time-select .hours .button .digit { background-color: #343; }
+.time-select .hours .button.selected .digit { background-color: #4f4; color: #000; }
+.time-select .minutes .button .digit { background-color: #334; }
+.time-select .minutes .button.selected .digit { background-color: #68f; color: #000; }
 
