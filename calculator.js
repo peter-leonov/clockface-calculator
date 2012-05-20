@@ -56,4 +56,6 @@ function minutes (v)
 bindButtons($$('.time-select .hours .button'), hours)
 bindButtons($$('.time-select .minutes .button'), minutes)
 
+window.onload = function () { window.scrollTo(0, 0) }
+
 })();
