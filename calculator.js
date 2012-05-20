@@ -1,22 +1,37 @@
+function $ (q) { return document.querySelector(q) }
+function $$ (q) { return document.querySelectorAll(q) }
+
 ;(function(){
+
+// debug only
+$('.time-result').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
+
+})();
+
+
+;(function(){
+
+var result = $('.time-result')
 
 function touchstart (e)
 {
 	e.preventDefault()
-	window.location.reload(true)
 }
 document.addEventListener('touchstart', touchstart, false)
 
-function tap (e)
+
+
+var lastHour = null
+function hour (e)
 {
-	e.preventDefault()
-	e.stopPropagation()
+	if (lastHour)
+		lastHour.classList.remove('selected')
 	this.classList.toggle('selected')
+	lastHour = this
 }
 
-var buttons = document.querySelectorAll('.time-select .button')
-for (var i = 0, il = buttons.length; i < il; i++)
-	buttons[i].addEventListener('touchstart', tap, false)
+var hours = $$('.time-select .hours .button')
+for (var i = 0, il = hours.length; i < il; i++)
+	hours[i].addEventListener('touchstart', hour, false)
 
 })();
-
