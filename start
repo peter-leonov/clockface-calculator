@@ -1,0 +1,7 @@
+#!/bin/sh
+
+PROJ_ROOT="$(cd "$(dirname "$0")" && pwd)/"
+
+cd "$PROJ_ROOT" # needed by nginx, it's resolver of a unix socket path
+
+nginx -q -p "$PROJ_ROOT" -c "nginx.developer.conf"
