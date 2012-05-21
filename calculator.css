@@ -13,10 +13,11 @@ html { background: #000; font-family: sans-serif; }
 
 html, body { color: #fff; }
 
-.time-result { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
-.time-result .sep { color: #aaa; }
-.time-result .hours.chosen { color: #8f8; }
-.time-result .minutes.chosen { color: #88f; }
+.clock .sep { color: #aaa; }
+.clock .hours.chosen { color: #8f8; }
+.clock .minutes.chosen { color: #88f; }
+
+#time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
 
 .time-select .hours { overflow: hidden; margin-bottom: 20px; }
 .time-select .button { float: left; overflow: hidden; width: 54px; height: 54px; }
@@ -34,3 +35,5 @@ html, body { color: #fff; }
 
 #results-panel { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #000; }
 body.results #results-panel { display: block; }
+
+#results-panel .period { font-size: 48px; text-align: center; margin: 15px 0; }

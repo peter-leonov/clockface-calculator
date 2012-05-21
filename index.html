@@ -13,7 +13,7 @@
 
 <div id="time-panel">
 
-<div class="time-result"><span class="hours">00</span><span class="sep">:</span><span class="minutes">00</span></div>
+<div class="start-time"><span class="clock"><span class="hours">00</span><span class="sep">:</span><span class="minutes">00</span></span></div>
 
 <div class="time-select">
 	<ul class="hours">
@@ -62,7 +62,11 @@
 </div id="time-picker">
 
 <div id="results-panel">
-	с <span class="start">00:00</span> по <span class="end">00:00</span>
+	<div class="period">
+		<span class="clock start"><span class="hours chosen">00</span><span class="sep">:</span><span class="minutes chosen">00</span></span>
+		–
+		<span class="clock end"><span class="hours chosen">00</span><span class="sep">:</span><span class="minutes chosen">00</span></span>
+	</div>
 </div>
 
 <script src="calculator.js"></script>

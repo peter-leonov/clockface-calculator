@@ -2,7 +2,7 @@ function $ (q) { return document.querySelector(q) }
 function $$ (q) { return document.querySelectorAll(q) }
 
 // debug only
-$('.time-result').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
+$('.start-time').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
 
 ;(function(){
 
@@ -117,8 +117,13 @@ Me.prototype =
 		var nodes = this.nodes
 		nodes.root.classList.add('results')
 		
-		nodes.start.firstChild.nodeValue = sh + ':' + sm
-		nodes.end.firstChild.nodeValue = eh + ':' + (em < 10 ? '0' + em : em)
+		var start = nodes.start
+		start.hour.firstChild.nodeValue = sh
+		start.minute.firstChild.nodeValue = sm
+		
+		var end = nodes.end
+		end.hour.firstChild.nodeValue = eh
+		end.minute.firstChild.nodeValue = em < 10 ? '0' + em : em
 	},
 	
 	reset: function ()
@@ -147,15 +152,23 @@ var nodes =
 {
 	root: $('body'),
 	
-	clockHours: $('.time-result .hours'),
-	clockMinutes: $('.time-result .minutes'),
+	clockHours: $('.start-time .clock .hours'),
+	clockMinutes: $('.start-time .clock .minutes'),
 	
 	hoursButtons: $$('.time-select .hours .button'),
 	minutesButtons: $$('.time-select .minutes .button'),
 	
 	resultsPanel: $('#results-panel'),
-	start: $('#results-panel .start'),
-	end: $('#results-panel .end')
+	start:
+	{
+		hour: $('#results-panel .start .hours'),
+		minute: $('#results-panel .start .minutes')
+	},
+	end:
+	{
+		hour: $('#results-panel .end .hours'),
+		minute: $('#results-panel .end .minutes')
+	}
 }
 
 var widget = new Calculator()
