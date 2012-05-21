@@ -1,6 +1,25 @@
 function $ (q) { return document.querySelector(q) }
 function $$ (q) { return document.querySelectorAll(q) }
 
+// 1, 2, 5: банкир, банкира, банкиров
+String.prototype.plural = Number.prototype.plural = function (a, b, c)
+{
+	if (this % 1)
+		return b
+	
+	var v = Math.abs(this) % 100
+	if (11 <= v && v <= 19)
+		return c
+	
+	v = v % 10
+	if (2 <= v && v <= 4)
+		return b
+	if (v == 1)
+		return a
+	
+	return c
+}
+
 // debug only
 $('.start-time').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
 
@@ -135,7 +154,31 @@ Me.prototype =
 		end.minute.firstChild.nodeValue = em < 10 ? '0' + em : em
 		
 		
-		var spent = this.calculateTimeSpent(sh, sm, eh, em)
+		var spent = this.calculateTimeSpent(sh, sm, eh, em),
+			spentMinutes = spent % 60,
+			spentHours = (spent - spentMinutes) / 60
+		
+		var sentence = spentHours + ' ' + spentHours.plural('час', 'часа', 'часов')
+		if (spentMinutes)
+		{
+			sentence += ' ' + spentMinutes + ' ' + spentMinutes.plural('минута', 'минуты', 'минут')
+			sentence += ' = ' + spentHours * 60 + ' + ' + spentMinutes
+		}
+		sentence += ' = ' + spent + ' ' + spent.plural('минута', 'минуты', 'минут')
+		
+		nodes.time.firstChild.nodeValue = sentence
+		
+		var add = 0
+		if (spent < 60)
+			add = spent
+		else
+			add = 60
+		
+		var costs = spent + add
+		
+		var sentence = spent + ' ' + spent.plural('рубль', 'рубля', 'рублей') + ' + ' + add + ' ' + add.plural('рубль', 'рубля', 'рублей')
+		sentence += ' = ' + costs + ' ' + costs.plural('рубль', 'рубля', 'рублей')
+		nodes.costs.firstChild.nodeValue = sentence
 	},
 	
 	calculateTimeSpent: function (sh, sm, eh, em)
@@ -217,7 +260,10 @@ var nodes =
 	{
 		hour: $('#results-panel .end .hours'),
 		minute: $('#results-panel .end .minutes')
-	}
+	},
+	
+	time: $('#results-panel .time'),
+	costs: $('#results-panel .costs')
 }
 
 var widget = new Calculator()
