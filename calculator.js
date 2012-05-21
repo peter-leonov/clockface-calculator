@@ -6,7 +6,11 @@ $('.time-result').addEventListener('touchstart', function (e) { window.location.
 
 ;(function(){
 
-function Me () {}
+function Me ()
+{
+	this.hour = -1
+	this.minute = -1
+}
 
 Me.prototype =
 {
@@ -27,6 +31,37 @@ Me.prototype =
 			nodes[i].addEventListener('touchstart', function () { cb(this) }, false)
 	},
 	
+	renderClock: function ()
+	{
+		var nodes = this.nodes
+		
+		var v = this.hour
+		var node = nodes.clockHours
+		if (v == -1)
+		{
+			node.firstChild.nodeValue = '00'
+			node.classList.remove('chosen')
+		}
+		else
+		{
+			node.firstChild.nodeValue = v
+			node.classList.add('chosen')
+		}
+		
+		var v = this.minute
+		var node = nodes.clockMinutes
+		if (v == -1)
+		{
+			node.firstChild.nodeValue = '00'
+			node.classList.remove('chosen')
+		}
+		else
+		{
+			node.firstChild.nodeValue = v
+			node.classList.add('chosen')
+		}
+	},
+	
 	hourChosen: function (node)
 	{
 		if (this.lastHourNode)
@@ -36,9 +71,6 @@ Me.prototype =
 		
 		var v = node.getAttribute('data-value')
 		
-		var node = this.nodes.clockHours
-		node.firstChild.nodeValue = v
-		node.classList.add('chosen')
 		
 		this.hour = v
 		this.timeChosen()
@@ -53,9 +85,6 @@ Me.prototype =
 		
 		var v = node.getAttribute('data-value')
 		
-		var node = this.nodes.clockMinutes
-		node.firstChild.nodeValue = v
-		node.classList.add('chosen')
 		
 		this.minute = v
 		this.timeChosen()
@@ -63,12 +92,14 @@ Me.prototype =
 	
 	timeChosen: function ()
 	{
+		this.renderClock()
+		
 		var h = this.hour
-		if (h === undefined)
+		if (h == -1)
 			return
 		
 		var m = this.minute
-		if (m === undefined)
+		if (m == -1)
 			return
 		
 		window.clearTimeout(this.switchTimer)
@@ -76,18 +107,28 @@ Me.prototype =
 		this.switchTimer = window.setTimeout(function () { me.showResults(h, m) }, 500)
 	},
 	
-	showResults: function (h, m)
+	showResults: function (sh, sm)
 	{
-		this.nodes.root.classList.add('results')
+		var now = new Date()
+		
+		var eh = now.getHours(),
+			em = Math.floor(now.getMinutes() / 5) * 5
+		
+		var nodes = this.nodes
+		nodes.root.classList.add('results')
+		
+		nodes.start.firstChild.nodeValue = sh + ':' + sm
+		nodes.end.firstChild.nodeValue = eh + ':' + (em < 10 ? '0' + em : em)
 	},
 	
 	reset: function ()
 	{
-		this.minute = undefined
+		this.minute = -1
+		this.hour = -1
+		this.renderClock()
+		
 		this.lastMinuteNode.classList.remove('selected')
 		this.lastMinuteNode = null
-		
-		this.hour = undefined
 		this.lastHourNode.classList.remove('selected')
 		this.lastHourNode = null
 		
@@ -112,7 +153,9 @@ var nodes =
 	hoursButtons: $$('.time-select .hours .button'),
 	minutesButtons: $$('.time-select .minutes .button'),
 	
-	resultsPanel: $('#results-panel')
+	resultsPanel: $('#results-panel'),
+	start: $('#results-panel .start'),
+	end: $('#results-panel .end')
 }
 
 var widget = new Calculator()
