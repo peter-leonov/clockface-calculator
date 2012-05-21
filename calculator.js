@@ -29,8 +29,8 @@ function preventDefault (e) { e.preventDefault() }
 
 function Me ()
 {
-	this.hour = -1
-	this.minute = -1
+	this.hours = -1
+	this.minutes = -1
 }
 
 Me.prototype =
@@ -49,8 +49,8 @@ Me.prototype =
 		document.addEventListener('touchstart', preventDefault, false)
 		
 		var me = this
-		this.bindButtons(nodes.hoursButtons, function (node) { me.hourChosen(node) })
-		this.bindButtons(nodes.minutesButtons, function (node) { me.minuteChosen(node) })
+		this.bindButtons(nodes.hoursButtons, function (node) { me.hoursChosen(node) })
+		this.bindButtons(nodes.minutesButtons, function (node) { me.minutesChosen(node) })
 		
 		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
 	},
@@ -65,7 +65,7 @@ Me.prototype =
 	{
 		var nodes = this.nodes
 		
-		var v = this.hour
+		var v = this.hours
 		var node = nodes.clockHours
 		if (v == -1)
 		{
@@ -78,7 +78,7 @@ Me.prototype =
 			node.classList.add('chosen')
 		}
 		
-		var v = this.minute
+		var v = this.minutes
 		var node = nodes.clockMinutes
 		if (v == -1)
 		{
@@ -92,7 +92,7 @@ Me.prototype =
 		}
 	},
 	
-	hourChosen: function (node)
+	hoursChosen: function (node)
 	{
 		if (this.lastHourNode)
 				this.lastHourNode.classList.remove('selected')
@@ -101,11 +101,11 @@ Me.prototype =
 		
 		var v = +node.getAttribute('data-value')
 		
-		this.hour = v
+		this.hours = v
 		this.timeChosen()
 	},
 	
-	minuteChosen: function (node)
+	minutesChosen: function (node)
 	{
 		if (this.lastMinuteNode)
 				this.lastMinuteNode.classList.remove('selected')
@@ -114,7 +114,7 @@ Me.prototype =
 		
 		var v = +node.getAttribute('data-value')
 		
-		this.minute = v
+		this.minutes = v
 		this.timeChosen()
 	},
 	
@@ -122,11 +122,11 @@ Me.prototype =
 	{
 		this.renderClock()
 		
-		var h = this.hour
+		var h = this.hours
 		if (h == -1)
 			return
 		
-		var m = this.minute
+		var m = this.minutes
 		if (m == -1)
 			return
 		
@@ -146,12 +146,12 @@ Me.prototype =
 		nodes.root.classList.add('results')
 		
 		var start = nodes.start
-		start.hour.firstChild.nodeValue = sh
-		start.minute.firstChild.nodeValue = sm < 10 ? '0' + sm : sm
+		start.hours.firstChild.nodeValue = sh
+		start.minutes.firstChild.nodeValue = sm < 10 ? '0' + sm : sm
 		
 		var end = nodes.end
-		end.hour.firstChild.nodeValue = eh
-		end.minute.firstChild.nodeValue = em < 10 ? '0' + em : em
+		end.hours.firstChild.nodeValue = eh
+		end.minutes.firstChild.nodeValue = em < 10 ? '0' + em : em
 		
 		
 		var spent = this.calculateTimeSpent(sh, sm, eh, em),
@@ -195,8 +195,8 @@ Me.prototype =
 	
 	reset: function ()
 	{
-		this.minute = -1
-		this.hour = -1
+		this.minutes = -1
+		this.hours = -1
 		this.renderClock()
 		
 		this.lastMinuteNode.classList.remove('selected')
@@ -249,13 +249,13 @@ var nodes =
 	resultsPanel: $('#results-panel'),
 	start:
 	{
-		hour: $('#results-panel .start .hours'),
-		minute: $('#results-panel .start .minutes')
+		hours: $('#results-panel .start .hours'),
+		minutes: $('#results-panel .start .minutes')
 	},
 	end:
 	{
-		hour: $('#results-panel .end .hours'),
-		minute: $('#results-panel .end .minutes')
+		hours: $('#results-panel .end .hours'),
+		minutes: $('#results-panel .end .minutes')
 	},
 	
 	time: $('#results-panel .time'),
