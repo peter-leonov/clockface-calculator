@@ -15,30 +15,27 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		this.bindButtons(nodes.hoursButtons, function (v, node) { me.hourChosen(v) })
-		this.bindButtons(nodes.minutesButtons, function (v, node) { me.minuteChosen(v) })
+		this.bindButtons(nodes.hoursButtons, function (node) { me.hourChosen(node) })
+		this.bindButtons(nodes.minutesButtons, function (node) { me.minuteChosen(node) })
 		
 		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
 	},
 	
 	bindButtons: function (nodes, cb)
 	{
-		var last = null
-		function tap (e)
-		{
-			if (last)
-				last.classList.remove('selected')
-			this.classList.toggle('selected')
-			last = this
-			cb(this.getAttribute('data-value'), last)
-		}
-		
 		for (var i = 0, il = nodes.length; i < il; i++)
-			nodes[i].addEventListener('touchstart', tap, false)
+			nodes[i].addEventListener('touchstart', function () { cb(this) }, false)
 	},
 	
-	hourChosen: function (v)
+	hourChosen: function (node)
 	{
+		if (this.lastHourNode)
+				this.lastHourNode.classList.remove('selected')
+		node.classList.toggle('selected')
+		this.lastHourNode = node
+		
+		var v = node.getAttribute('data-value')
+		
 		var node = this.nodes.clockHours
 		node.firstChild.nodeValue = v
 		node.classList.add('chosen')
@@ -47,8 +44,15 @@ Me.prototype =
 		this.timeChosen()
 	},
 	
-	minuteChosen: function (v)
+	minuteChosen: function (node)
 	{
+		if (this.lastMinuteNode)
+				this.lastMinuteNode.classList.remove('selected')
+		node.classList.toggle('selected')
+		this.lastMinuteNode = node
+		
+		var v = node.getAttribute('data-value')
+		
 		var node = this.nodes.clockMinutes
 		node.firstChild.nodeValue = v
 		node.classList.add('chosen')
@@ -79,6 +83,14 @@ Me.prototype =
 	
 	reset: function ()
 	{
+		this.minute = undefined
+		this.lastMinuteNode.classList.remove('selected')
+		this.lastMinuteNode = null
+		
+		this.hour = undefined
+		this.lastHourNode.classList.remove('selected')
+		this.lastHourNode = null
+		
 		this.nodes.root.classList.remove('results')
 	}
 }
