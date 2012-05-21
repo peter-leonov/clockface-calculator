@@ -48,6 +48,10 @@ Me.prototype =
 		// disable scrolling
 		document.addEventListener('touchstart', preventDefault, false)
 		
+		this.mainClock = new Me.Clock(nodes.mainClock)
+		this.startClock = new Me.Clock(nodes.startClock)
+		this.endClock = new Me.Clock(nodes.endClock)
+		
 		var me = this
 		this.bindButtons(nodes.hoursButtons, function (node) { me.hoursChosen(node) })
 		this.bindButtons(nodes.minutesButtons, function (node) { me.minutesChosen(node) })
@@ -63,33 +67,7 @@ Me.prototype =
 	
 	renderClock: function ()
 	{
-		var nodes = this.nodes
-		
-		var v = this.hours
-		var node = nodes.clockHours
-		if (v == -1)
-		{
-			node.firstChild.nodeValue = '00'
-			node.classList.remove('chosen')
-		}
-		else
-		{
-			node.firstChild.nodeValue = v
-			node.classList.add('chosen')
-		}
-		
-		var v = this.minutes
-		var node = nodes.clockMinutes
-		if (v == -1)
-		{
-			node.firstChild.nodeValue = '00'
-			node.classList.remove('chosen')
-		}
-		else
-		{
-			node.firstChild.nodeValue = v < 10 ? '0' + v : v
-			node.classList.add('chosen')
-		}
+		this.mainClock.time(this.hours, this.minutes)
 	},
 	
 	hoursChosen: function (node)
@@ -145,13 +123,8 @@ Me.prototype =
 		var nodes = this.nodes
 		nodes.root.classList.add('results')
 		
-		var start = nodes.start
-		start.hours.firstChild.nodeValue = sh
-		start.minutes.firstChild.nodeValue = sm < 10 ? '0' + sm : sm
-		
-		var end = nodes.end
-		end.hours.firstChild.nodeValue = eh
-		end.minutes.firstChild.nodeValue = em < 10 ? '0' + em : em
+		this.startClock.time(sh, sm)
+		this.endClock.time(eh, em)
 		
 		
 		var spent = this.calculateTimeSpent(sh, sm, eh, em),
@@ -236,23 +209,71 @@ window.Calculator = Me
 
 ;(function(){
 
+function Me (nodes)
+{
+	this.nodes = nodes
+}
+
+Me.prototype =
+{
+	time: function (h, m)
+	{
+		var nodes = this.nodes
+		
+		var node = nodes.hours
+		if (h == -1)
+		{
+			node.firstChild.nodeValue = '00'
+			node.classList.remove('chosen')
+		}
+		else
+		{
+			node.firstChild.nodeValue = h
+			node.classList.add('chosen')
+		}
+		
+		var node = nodes.minutes
+		if (m == -1)
+		{
+			node.firstChild.nodeValue = '00'
+			node.classList.remove('chosen')
+		}
+		else
+		{
+			node.firstChild.nodeValue = m < 10 ? '0' + m : m
+			node.classList.add('chosen')
+		}
+	}
+}
+
+Calculator.Clock = Me
+
+})();
+
+
+
+;(function(){
+
 var nodes =
 {
 	root: $('body'),
 	
-	clockHours: $('.start-time .clock .hours'),
-	clockMinutes: $('.start-time .clock .minutes'),
+	mainClock:
+	{
+		hours: $('#time-panel .start-time .clock .hours'),
+		minutes: $('#time-panel .start-time .clock .minutes')
+	},
 	
 	hoursButtons: $$('.time-select .hours .button'),
 	minutesButtons: $$('.time-select .minutes .button'),
 	
 	resultsPanel: $('#results-panel'),
-	start:
+	startClock:
 	{
 		hours: $('#results-panel .start .hours'),
 		minutes: $('#results-panel .start .minutes')
 	},
-	end:
+	endClock:
 	{
 		hours: $('#results-panel .end .hours'),
 		minutes: $('#results-panel .end .minutes')
