@@ -13,7 +13,7 @@ html { background: #000; font-family: sans-serif; }
 
 html, body { color: #fff; }
 
-.time-result { font-size: 65px; width: 165px; margin: 10px auto 15px; }
+.time-result { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
 .time-result .hours.chosen { color: #8f8; }
 .time-result .minutes.chosen { color: #88f; }
 
