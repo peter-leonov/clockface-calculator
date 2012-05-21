@@ -132,7 +132,7 @@ Me.prototype =
 		
 		window.clearTimeout(this.switchTimer)
 		var me = this
-		this.switchTimer = window.setTimeout(function () { me.showResults(h, m) }, 500)
+		this.switchTimer = window.setTimeout(function () { me.showResults(h, m) }, 350)
 	},
 	
 	showResults: function (sh, sm)
