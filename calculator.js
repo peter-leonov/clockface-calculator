@@ -158,12 +158,8 @@ Me.prototype =
 			spentMinutes = spent % 60,
 			spentHours = (spent - spentMinutes) / 60
 		
-		var sentence = spentHours + ' ' + spentHours.plural('час', 'часа', 'часов')
-		if (spentMinutes)
-		{
-			sentence += ' ' + spentMinutes + ' ' + spentMinutes.plural('минута', 'минуты', 'минут')
-			sentence += ' = ' + spentHours * 60 + ' + ' + spentMinutes
-		}
+		var sentence = spentHours + ' ' + spentHours.plural('час', 'часа', 'часов') + ' ' + spentMinutes + ' ' + spentMinutes.plural('минута', 'минуты', 'минут')
+		sentence += ' = ' + spentHours * 60 + ' + ' + spentMinutes
 		sentence += ' = ' + spent + ' ' + spent.plural('минута', 'минуты', 'минут')
 		
 		nodes.time.firstChild.nodeValue = sentence
