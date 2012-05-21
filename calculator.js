@@ -57,7 +57,7 @@ Me.prototype =
 		}
 		else
 		{
-			node.firstChild.nodeValue = v
+			node.firstChild.nodeValue = v < 10 ? '0' + v : v
 			node.classList.add('chosen')
 		}
 	},
@@ -69,8 +69,7 @@ Me.prototype =
 		node.classList.toggle('selected')
 		this.lastHourNode = node
 		
-		var v = node.getAttribute('data-value')
-		
+		var v = +node.getAttribute('data-value')
 		
 		this.hour = v
 		this.timeChosen()
@@ -83,8 +82,7 @@ Me.prototype =
 		node.classList.toggle('selected')
 		this.lastMinuteNode = node
 		
-		var v = node.getAttribute('data-value')
-		
+		var v = +node.getAttribute('data-value')
 		
 		this.minute = v
 		this.timeChosen()
@@ -119,11 +117,30 @@ Me.prototype =
 		
 		var start = nodes.start
 		start.hour.firstChild.nodeValue = sh
-		start.minute.firstChild.nodeValue = sm
+		start.minute.firstChild.nodeValue = sm < 10 ? '0' + sm : sm
 		
 		var end = nodes.end
 		end.hour.firstChild.nodeValue = eh
 		end.minute.firstChild.nodeValue = em < 10 ? '0' + em : em
+		
+		
+		var spent = this.calculateTimeSpent(sh, sm, eh, em)
+	},
+	
+	calculateTimeSpent: function (sh, sm, eh, em)
+	{
+		var start = sh * 60 + sm
+		var end = eh * 60 + em
+		
+		if (start == end)
+			return 24 * 60
+		
+		if (start < end)
+			return end - start
+		
+		// start > end
+		
+		return 24 * 60 - start + end
 	},
 	
 	reset: function ()
@@ -173,6 +190,10 @@ var nodes =
 
 var widget = new Calculator()
 widget.bind(nodes)
+
+console.log(widget.calculateTimeSpent(22, 0, 22, 0), 1440)
+console.log(widget.calculateTimeSpent(17, 15, 22, 30), 315)
+console.log(widget.calculateTimeSpent(22, 0, 1, 30), 210)
 
 // disable scrolling
 document.addEventListener('touchstart', function (e) { e.preventDefault() }, false)
