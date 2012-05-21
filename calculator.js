@@ -57,12 +57,17 @@ Me.prototype =
 		this.bindButtons(nodes.minutesButtons, function (node) { me.minutesChosen(node) })
 		
 		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
+		nodes.resultsPanel.addEventListener('mousedown', function (e) { me.reset() }, false)
 	},
 	
 	bindButtons: function (nodes, cb)
 	{
 		for (var i = 0, il = nodes.length; i < il; i++)
-			nodes[i].addEventListener('touchstart', function () { cb(this) }, false)
+		{
+			var node = nodes[i]
+			node.addEventListener('touchstart', function () { cb(this) }, false)
+			node.addEventListener('mousedown', function () { cb(this) }, false)
+		}
 	},
 	
 	renderClock: function ()
