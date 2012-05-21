@@ -6,6 +6,8 @@ $('.start-time').addEventListener('touchstart', function (e) { window.location.r
 
 ;(function(){
 
+function preventDefault (e) { e.preventDefault() }
+
 function Me ()
 {
 	this.hour = -1
@@ -17,6 +19,15 @@ Me.prototype =
 	bind: function (nodes)
 	{
 		this.nodes = nodes
+		
+		if (!this.makeTest())
+		{
+			this.panic()
+			return
+		}
+		
+		// disable scrolling
+		document.addEventListener('touchstart', preventDefault, false)
 		
 		var me = this
 		this.bindButtons(nodes.hoursButtons, function (node) { me.hourChosen(node) })
@@ -155,6 +166,27 @@ Me.prototype =
 		this.lastHourNode = null
 		
 		this.nodes.root.classList.remove('results')
+	},
+	
+	makeTest: function ()
+	{
+		if
+		(
+			this.calculateTimeSpent(22, 0, 22, 0) == 1440 &&
+			this.calculateTimeSpent(17, 15, 22, 30) == 315 &&
+			this.calculateTimeSpent(22, 0, 1, 30) == 210
+		)
+		{
+			return true
+		}
+		
+		return false
+	},
+	
+	panic: function ()
+	{
+		document.removeEventListener('touchstart', preventDefault, false)
+		this.nodes.root.classList.add('panic')
 	}
 }
 
@@ -191,12 +223,6 @@ var nodes =
 var widget = new Calculator()
 widget.bind(nodes)
 
-console.log(widget.calculateTimeSpent(22, 0, 22, 0), 1440)
-console.log(widget.calculateTimeSpent(17, 15, 22, 30), 315)
-console.log(widget.calculateTimeSpent(22, 0, 1, 30), 210)
-
-// disable scrolling
-document.addEventListener('touchstart', function (e) { e.preventDefault() }, false)
 // hide adressbar
 window.onload = function () { setTimeout(function () { window.scrollTo(0, 0) }, 1000) }
 
