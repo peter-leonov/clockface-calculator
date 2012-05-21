@@ -13,7 +13,9 @@ html { background: #000; font-family: sans-serif; }
 
 html, body { color: #fff; }
 
-.time-result { font-size: 65px; width: 155px; margin: 10px auto 15px; }
+.time-result { font-size: 65px; width: 165px; margin: 10px auto 15px; }
+.time-result .hours.chosen { color: #8f8; }
+.time-result .minutes.chosen { color: #88f; }
 
 .time-select .hours { overflow: hidden; margin-bottom: 20px; }
 .time-select .button { float: left; overflow: hidden; width: 54px; height: 54px; }

@@ -15,8 +15,8 @@ Me.prototype =
 		this.nodes = nodes
 		
 		var me = this
-		this.bindButtons(nodes.hoursButtons, function (v) { me.hourSelected(v) })
-		this.bindButtons(nodes.minutesButtons, function (v) { me.minuteSelected(v) })
+		this.bindButtons(nodes.hoursButtons, function (v) { me.hourChosen(v) })
+		this.bindButtons(nodes.minutesButtons, function (v) { me.minuteChosen(v) })
 	},
 	
 	bindButtons: function (nodes, cb)
@@ -35,14 +35,18 @@ Me.prototype =
 			nodes[i].addEventListener('touchstart', tap, false)
 	},
 	
-	hourSelected: function (v)
+	hourChosen: function (v)
 	{
-		this.nodes.clockHours.firstChild.nodeValue = v
+		var node = this.nodes.clockHours
+		node.firstChild.nodeValue = v
+		node.classList.add('chosen')
 	},
 	
-	minuteSelected: function (v)
+	minuteChosen: function (v)
 	{
-		this.nodes.clockMinutes.firstChild.nodeValue = v
+		var node = this.nodes.clockMinutes
+		node.firstChild.nodeValue = v
+		node.classList.add('chosen')
 	}
 }
 
