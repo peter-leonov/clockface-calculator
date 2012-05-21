@@ -31,3 +31,6 @@ html, body { color: #fff; }
 .time-select .minutes .button .digit { background-color: #334; }
 .time-select .minutes .button.selected .digit { background-color: #68f; color: #000; }
 
+
+#results-panel { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #000; }
+body.results #results-panel { display: block; }
