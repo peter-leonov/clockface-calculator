@@ -26,18 +26,17 @@ a { color: #8af; }
 
 #time-panel { overflow: hidden; }
 #time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
-#time-panel .time-select .hours { overflow: hidden; margin-bottom: 20px; }
-#time-panel .time-select .button { float: left; overflow: hidden; width: 54px; height: 54px; }
-#time-panel .time-select .button:nth-child(6n-5),
-#time-panel .time-select .button:nth-child(6n) { width: 52px; }
-#time-panel .time-select .button .digit { display: block; width: 45px; height: 45px; margin: 3px; background-color: #444; border-radius: 3px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; cursor: pointer; }
-#time-panel .time-select .button .digit.teen { text-indent: -2px; }
-#time-panel .time-select .button .digit { text-shadow: 0 1px #000; }
-#time-panel .time-select .button.selected .digit { color: #000; font-size: 36px; }
-#time-panel .time-select .hours .button .digit { background-color: #343; }
-#time-panel .time-select .hours .button.selected .digit { background-color: #4f4; color: #000; }
-#time-panel .time-select .minutes .button .digit { background-color: #334; }
-#time-panel .time-select .minutes .button.selected .digit { background-color: #68f; color: #000; }
+
+#clockface { position: relative; width: 320px; height: 354px; background: url(model.png); }
+#clockface .button { position: absolute; overflow: hidden; width: 54px; height: 54px; }
+#clockface .button .digit { display: block; width: 45px; height: 45px; margin: 3px; background-color: #444; border-radius: 20px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
+#clockface .button .digit.teen { text-indent: -2px; }
+#clockface .button.selected .digit { color: #000; font-size: 36px; }
+#clockface .hours .button .digit { background-color: #343; }
+#clockface .hours .button.selected .digit { background-color: #4f4; color: #000; }
+#clockface .minutes { display: none; }
+#clockface .minutes .button .digit { background-color: #334; }
+#clockface .minutes .button.selected .digit { background-color: #68f; color: #000; }
 
 
 #results-panel { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #000; }

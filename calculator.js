@@ -269,8 +269,8 @@ var nodes =
 		minutes: $('#time-panel .start-time .clock .minutes')
 	},
 	
-	hoursButtons: $$('.time-select .hours .button'),
-	minutesButtons: $$('.time-select .minutes .button'),
+	hoursButtons: $$('#clockface .hours .button'),
+	minutesButtons: $$('#clockface .minutes .button'),
 	
 	resultsPanel: $('#results-panel'),
 	startClock:
