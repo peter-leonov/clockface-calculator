@@ -27,19 +27,41 @@ a { color: #8af; }
 #time-panel { overflow: hidden; }
 #time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
 
-#clockface { position: relative; width: 320px; height: 354px; background: url(model.png); }
+#clockface { position: relative; width: 320px; height: 354px; }
 #clockface .button { position: absolute; overflow: hidden; width: 51px; height: 51px; }
 #clockface .button .digit { display: block; width: 45px; height: 45px; margin: 3px; background-color: #444; border-radius: 20px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .button .digit.teen { text-indent: -2px; }
 #clockface .button.selected .digit { color: #000; font-size: 36px; }
-#clockface .button.n0 { left: 134px; top: -3px; }
-#clockface .button.n1 { left: 225px; top: -3px; }
-#clockface .button.n2 { left: 272px; top: 61px; }
+
+#clockface .hours .button.n0  { left:  134px; top: -3px; }
+#clockface .hours .button.n1  { left:  225px; top: -3px; }
+#clockface .hours .button.n2  { left:  272px; top:  61px; }
+#clockface .hours .button.n3  { left:  272px; top:  151px; }
+#clockface .hours .button.n4  { left:  272px; top:  241px; }
+#clockface .hours .button.n5  { left:  225px; top:  306px; }
+#clockface .hours .button.n6  { left:  134px; top:  306px; }
+#clockface .hours .button.n7  { left:  44px;  top:  306px; }
+#clockface .hours .button.n8  { left: -3px;   top:  241px; }
+#clockface .hours .button.n9  { left: -3px;   top:  151px; }
+#clockface .hours .button.n10 { left: -3px;   top:  61px; }
+#clockface .hours .button.n11 { left:  44px;  top: -3px; }
+
+#clockface .minutes .button.n0  { left: 134px; top: 50px; }
+#clockface .minutes .button.n5  { left: 184px; top: 50px; }
+#clockface .minutes .button.n10 { left: 218px; top: 101px; }
+#clockface .minutes .button.n15 { left: 218px; top: 151px; }
+#clockface .minutes .button.n20 { left: 218px; top: 202px; }
+#clockface .minutes .button.n25 { left: 184px; top: 252px; }
+#clockface .minutes .button.n30 { left: 134px; top: 252px; }
+#clockface .minutes .button.n35 { left:  84px; top: 252px; }
+#clockface .minutes .button.n40 { left:  50px; top: 202px; }
+#clockface .minutes .button.n45 { left:  50px; top: 151px; }
+#clockface .minutes .button.n50 { left:  50px; top: 101px; }
+#clockface .minutes .button.n55 { left:  84px; top:  50px; }
 
 
 #clockface .hours .button .digit { background-color: #343; }
 #clockface .hours .button.selected .digit { background-color: #4f4; color: #000; }
-#clockface .minutes { display: none; }
 #clockface .minutes .button .digit { background-color: #334; }
 #clockface .minutes .button.selected .digit { background-color: #68f; color: #000; }
 
