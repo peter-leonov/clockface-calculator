@@ -1,4 +1,4 @@
-body,table,
+html,body,table,
 h1,h2,h3,h4,h5,h6
 p,form,
 fieldset,legend,
@@ -24,7 +24,7 @@ a { color: #8af; }
 .clock .hours.chosen { color: #8f8; }
 .clock .minutes.chosen { color: #88f; }
 
-#time-panel { position: relative; z-index: 1; }
+#time-panel { position: relative; overflow: hidden; height: 460px; z-index: 1; }
 #time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
 
 #clockface { position: relative; width: 320px; height: 354px; }
