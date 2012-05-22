@@ -88,8 +88,20 @@ Me.prototype =
 			}
 		}
 		
+		function start (e)
+		{
+			me.timeChosen(false)
+			move(e)
+		}
+		
+		function end (e)
+		{
+			me.timeChosen()
+		}
+		
 		nodes.clockface.addEventListener('touchmove', move, false)
-		nodes.clockface.addEventListener('touchstart', move, false)
+		nodes.clockface.addEventListener('touchstart', start, false)
+		nodes.clockface.addEventListener('touchend', end, false)
 	},
 	
 	renderClock: function ()
@@ -104,10 +116,9 @@ Me.prototype =
 		node.classList.toggle('selected')
 		this.lastHourNode = node
 		
-		var v = +node.getAttribute('data-value')
+		var v = +node.dataset.value
 		
 		this.hours = v
-		this.timeChosen()
 	},
 	
 	minutesChosen: function (node)
@@ -117,15 +128,20 @@ Me.prototype =
 		node.classList.toggle('selected')
 		this.lastMinuteNode = node
 		
-		var v = +node.getAttribute('data-value')
+		var v = +node.dataset.value
 		
 		this.minutes = v
-		this.timeChosen()
 	},
 	
-	timeChosen: function ()
+	timeChosen: function (ok)
 	{
 		this.renderClock()
+		
+		if (ok === false)
+		{
+			window.clearTimeout(this.switchTimer)
+			return
+		}
 		
 		var h = this.hours
 		if (h == -1)
