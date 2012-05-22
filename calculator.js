@@ -24,8 +24,6 @@ $('#clockface .reset').addEventListener('touchstart', function (e) { window.loca
 
 ;(function(){
 
-function preventDefault (e) { e.preventDefault() }
-
 function Me ()
 {
 	this.hours = -1
@@ -45,7 +43,7 @@ Me.prototype =
 		}
 		
 		// disable scrolling
-		nodes.timePanel.addEventListener('touchstart', preventDefault, false)
+		nodes.timePanel.addEventListener('touchstart', function (e) { e.preventDefault() }, false)
 		
 		this.mainClock = new Me.Clock(nodes.mainClock)
 		this.startClock = new Me.Clock(nodes.startClock)
@@ -62,17 +60,26 @@ Me.prototype =
 		var nodes = this.nodes
 		
 		var me = this
-		this.bindButtons(nodes.hoursButtons, function (node) { me.hoursChosen(node) })
-		this.bindButtons(nodes.minutesButtons, function (node) { me.minutesChosen(node) })
-	},
-	
-	bindButtons: function (nodes, cb)
-	{
-		for (var i = 0, il = nodes.length; i < il; i++)
+		function guess (e)
 		{
-			var node = nodes[i]
-			node.addEventListener('touchstart', function () { cb(this) }, false)
+			var node = document.elementFromPoint(e.pageX, e.pageY)
+			if (!node)
+				return
+			
+			var data = node.dataset
+			
+			var type = data.type
+			if (!type)
+				return
+			
+			if (type == 'hour')
+				me.hoursChosen(node)
+			else
+				me.minutesChosen(node)
 		}
+		
+		nodes.clockface.addEventListener('touchmove', guess, false)
+		nodes.clockface.addEventListener('touchstart', guess, false)
 	},
 	
 	renderClock: function ()
@@ -207,7 +214,6 @@ Me.prototype =
 	
 	panic: function ()
 	{
-		document.removeEventListener('touchstart', preventDefault, false)
 		this.nodes.root.classList.add('panic')
 	}
 }
@@ -269,6 +275,7 @@ var nodes =
 	root: $('body'),
 	
 	timePanel: $('#time-panel'),
+	clockface: $('#clockface'),
 	
 	mainClock:
 	{
