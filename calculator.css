@@ -59,6 +59,8 @@ a { color: #8af; }
 #clockface .minutes .button.n50 { left:  50px; top: 101px; }
 #clockface .minutes .button.n55 { left:  84px; top:  50px; }
 
+#clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
+
 
 #clockface .hours .button .digit { background-color: #343; }
 #clockface .hours .button.selected .digit { background-color: #4f4; color: #000; }

@@ -20,8 +20,7 @@ String.prototype.plural = Number.prototype.plural = function (a, b, c)
 	return c
 }
 
-// debug only
-$('.start-time').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
+$('#clockface .reset').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
 
 ;(function(){
 
