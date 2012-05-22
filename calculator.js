@@ -117,8 +117,9 @@ Me.prototype =
 		this.lastHourNode = node
 		
 		var v = +node.dataset.value
-		
 		this.hours = v
+		
+		this.renderClock()
 	},
 	
 	minutesChosen: function (node)
@@ -129,14 +130,13 @@ Me.prototype =
 		this.lastMinuteNode = node
 		
 		var v = +node.dataset.value
-		
 		this.minutes = v
+		
+		this.renderClock()
 	},
 	
 	timeChosen: function (ok)
 	{
-		this.renderClock()
-		
 		if (ok === false)
 		{
 			window.clearTimeout(this.switchTimer)
