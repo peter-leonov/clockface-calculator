@@ -60,9 +60,9 @@ Me.prototype =
 		var nodes = this.nodes
 		
 		var me = this
-		function guess (e)
+		function guess (x, y)
 		{
-			var node = document.elementFromPoint(e.pageX, e.pageY)
+			var node = document.elementFromPoint(x, y)
 			if (!node)
 				return
 			
@@ -78,8 +78,18 @@ Me.prototype =
 				me.minutesChosen(node)
 		}
 		
-		nodes.clockface.addEventListener('touchmove', guess, false)
-		nodes.clockface.addEventListener('touchstart', guess, false)
+		function move (e)
+		{
+			var touches = e.touches
+			for (var i = 0, il = touches.length; i < il; i++)
+			{
+				var t = touches[i]
+				guess(t.pageX, t.pageY)
+			}
+		}
+		
+		nodes.clockface.addEventListener('touchmove', move, false)
+		nodes.clockface.addEventListener('touchstart', move, false)
 	},
 	
 	renderClock: function ()
