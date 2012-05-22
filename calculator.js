@@ -55,7 +55,6 @@ Me.prototype =
 		
 		var me = this
 		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
-		nodes.resultsPanel.addEventListener('mousedown', function (e) { me.reset() }, false)
 	},
 	
 	bindClockface: function ()
@@ -73,7 +72,6 @@ Me.prototype =
 		{
 			var node = nodes[i]
 			node.addEventListener('touchstart', function () { cb(this) }, false)
-			node.addEventListener('mousedown', function () { cb(this) }, false)
 		}
 	},
 	
