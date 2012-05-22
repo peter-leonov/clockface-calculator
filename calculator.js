@@ -45,18 +45,26 @@ Me.prototype =
 		}
 		
 		// disable scrolling
-		document.addEventListener('touchstart', preventDefault, false)
+		nodes.timePanel.addEventListener('touchstart', preventDefault, false)
 		
 		this.mainClock = new Me.Clock(nodes.mainClock)
 		this.startClock = new Me.Clock(nodes.startClock)
 		this.endClock = new Me.Clock(nodes.endClock)
 		
+		this.bindClockface()
+		
+		var me = this
+		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
+		nodes.resultsPanel.addEventListener('mousedown', function (e) { me.reset() }, false)
+	},
+	
+	bindClockface: function ()
+	{
+		var nodes = this.nodes
+		
 		var me = this
 		this.bindButtons(nodes.hoursButtons, function (node) { me.hoursChosen(node) })
 		this.bindButtons(nodes.minutesButtons, function (node) { me.minutesChosen(node) })
-		
-		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
-		nodes.resultsPanel.addEventListener('mousedown', function (e) { me.reset() }, false)
 	},
 	
 	bindButtons: function (nodes, cb)
@@ -261,6 +269,8 @@ Calculator.Clock = Me
 var nodes =
 {
 	root: $('body'),
+	
+	timePanel: $('#time-panel'),
 	
 	mainClock:
 	{
