@@ -2,7 +2,7 @@ function $ (q) { return document.querySelector(q) }
 function $$ (q) { return document.querySelectorAll(q) }
 
 // 1, 2, 5: банкир, банкира, банкиров
-String.prototype.plural = Number.prototype.plural = function (a, b, c)
+Number.prototype.plural = function (a, b, c)
 {
 	if (this % 1)
 		return b
