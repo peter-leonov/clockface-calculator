@@ -28,11 +28,18 @@ a { color: #8af; }
 #time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
 
 #clockface { position: relative; width: 320px; height: 354px; }
-#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #111; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
-#clockface .button.selected { color: #000; font-size: 36px; }
-#clockface .button.selected { text-indent: 2px; }
+#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
+#clockface .hours .button.selected,
+#clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }
+
 #clockface .button.selected.teen { text-indent: -3px; }
 #clockface .button.teen { text-indent: -2px; }
+
+#clockface .hours .button { background-color: #343; width: 47px; height: 47px; border-width: 1px; line-height: 45px; }
+#clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
+#clockface .minutes .button { background-color: #334; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
+#clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
+
 
 #clockface .hours .button.n0    { left: 134px; top: 50px; }
 #clockface .hours .button.n1    { left: 186px; top: 50px; }
@@ -62,13 +69,6 @@ a { color: #8af; }
 
 
 #clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
-
-
-#clockface .hours .button { background-color: #343; }
-#clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
-#clockface .minutes .button { background-color: #334; }
-#clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
-
 
 
 #results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 0; right: 0; bottom: 0; background-color: #000; }
