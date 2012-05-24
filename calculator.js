@@ -22,6 +22,13 @@ Number.prototype.plural = function (a, b, c)
 
 $('#clockface .reset').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
 
+// function log (msg)
+// {
+// 	var li = document.createElement('li')
+// 	li.textContent = msg
+// 	$('#results-panel').appendChild(li)
+// }
+
 ;(function(){
 
 function Me ()
@@ -64,21 +71,23 @@ Me.prototype =
 		var node = this.nodes.resultsPanel
 		var me = this
 		
-		var y, scrolling
+		var scrolling, skip
 		function touchstart (e)
 		{
-			y = window.pageYOffset
+			skip = scrolling
+		}
+		
+		function touchmove (e)
+		{
+			skip = scrolling = true
 		}
 		
 		function touchend (e)
 		{
-			if (scrolling)
+			if (scrolling || skip)
 				return
-			
-			if (y == window.pageYOffset)
-				me.reset()
-			else
-				scrolling = true
+				
+			me.reset()
 		}
 		
 		var timer
@@ -89,6 +98,7 @@ Me.prototype =
 		}
 		
 		node.addEventListener('touchstart', touchstart, false)
+		node.addEventListener('touchmove', touchmove, false)
 		node.addEventListener('touchend', touchend, false)
 		window.addEventListener('scroll', scrollend, false)
 	},
