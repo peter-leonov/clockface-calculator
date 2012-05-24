@@ -389,7 +389,7 @@ var nodes =
 var widget = new Calculator()
 widget.bind(nodes)
 
-// hide adressbar
-window.onload = function () { setTimeout(function () { window.scrollTo(0, 0) }, 1000) }
+// // hide adressbar
+// window.onload = function () { setTimeout(function () { window.scrollTo(0, 0) }, 1000) }
 
 })();
