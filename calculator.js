@@ -118,10 +118,9 @@ Me.prototype =
 	updateCurrentHour: function ()
 	{
 		var h = new Date().getHours()
-		console.log(h)
-		var hoursArray = this.hoursArray
-		
 		h += 24
+		
+		var hoursArray = this.hoursArray
 		for (var i = 0; i <= 12; i++)
 			hoursArray[h + i + 1].classList.add('hidden')
 		for (var i = 0; i < 12; i++)
