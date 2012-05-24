@@ -1,4 +1,4 @@
-body,table,
+html,body,table,
 h1,h2,h3,h4,h5,h6
 p,form,
 fieldset,legend,
@@ -11,7 +11,14 @@ input[type="password"],
 input[type="text"]{margin:0;}
 html { background: #000; font-family: sans-serif; }
 
+/* fix window-html-body box model */
+html { overflow-y: scroll; height: 100%; }
+body { width: 320px; margin: 0 auto; position: relative; min-height: 100%; }
+
+
 html, body { color: #fff; }
+
+.hidden { display: none; }
 
 a { color: #8af; }
 
@@ -19,27 +26,58 @@ a { color: #8af; }
 .clock .hours.chosen { color: #8f8; }
 .clock .minutes.chosen { color: #88f; }
 
-#time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
+#time-panel { position: relative; overflow: hidden; height: 480px; z-index: 1; -webkit-user-select: none; }
 
-.time-select .hours { overflow: hidden; margin-bottom: 20px; }
-.time-select .button { float: left; overflow: hidden; width: 54px; height: 54px; }
-.time-select .button:nth-child(6n-5),
-.time-select .button:nth-child(6n) { width: 52px; }
-.time-select .button .digit { display: block; width: 45px; height: 45px; margin: 3px; background-color: #444; border-radius: 3px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; }
-.time-select .button .digit.teen { text-indent: -2px; }
-.time-select .button .digit { text-shadow: 0 1px #000; }
-.time-select .button.selected .digit { color: #000; font-size: 36px; }
-.time-select .hours .button .digit { background-color: #343; }
-.time-select .hours .button.selected .digit { background-color: #4f4; color: #000; }
-.time-select .minutes .button .digit { background-color: #334; }
-.time-select .minutes .button.selected .digit { background-color: #68f; color: #000; }
+#time-panel .period { font-size: 50px; text-align: center; margin: 30px 0 15px; }
+
+#clockface { position: relative; width: 320px; height: 358px; }
+#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
+#clockface .hours .button.selected,
+#clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }
+
+#clockface .button.selected.teen { text-indent: -3px; }
+#clockface .button.teen { text-indent: -2px; }
+
+#clockface .hours .button { background-color: #343; width: 47px; height: 47px; border-width: 1px; line-height: 45px; }
+#clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
+#clockface .minutes .button { background-color: #334; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
+#clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
+
+#clockface .hours .button.n0    { left: 134px; top: 50px; }
+#clockface .hours .button.n1    { left: 186px; top: 50px; }
+#clockface .hours .button.n2    { left: 218px; top: 99px; }
+#clockface .hours .button.n3    { left: 213px; top: 151px; }
+#clockface .hours .button.n4    { left: 218px; top: 203px; }
+#clockface .hours .button.n5    { left: 186px; top: 252px; }
+#clockface .hours .button.n6    { left: 134px; top: 252px; }
+#clockface .hours .button.n7    { left:  82px; top: 252px; }
+#clockface .hours .button.n8    { left:  50px; top: 203px; }
+#clockface .hours .button.n9    { left:  55px; top: 151px; }
+#clockface .hours .button.n10   { left:  50px; top:  99px; }
+#clockface .hours .button.n11   { left:  82px; top:  50px; }
+
+#clockface .minutes .button.n0  { left: 134px; top: -3px; }
+#clockface .minutes .button.n5  { left: 225px; top: -3px; }
+#clockface .minutes .button.n10 { left: 269px; top:  61px; }
+#clockface .minutes .button.n15 { left: 269px; top:  151px; }
+#clockface .minutes .button.n20 { left: 269px; top:  241px; }
+#clockface .minutes .button.n25 { left: 225px; top:  306px; }
+#clockface .minutes .button.n30 { left: 134px; top:  306px; }
+#clockface .minutes .button.n35 { left: 44px;  top:  306px; }
+#clockface .minutes .button.n40 { left: 0px;   top:  241px; }
+#clockface .minutes .button.n45 { left: 0px;   top:  151px; }
+#clockface .minutes .button.n50 { left: 0px;   top:  61px; }
+#clockface .minutes .button.n55 { left: 44px;  top: -3px; }
+
+#clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
 
 
-#results-panel { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #000; }
+#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 80px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
 body.results #results-panel { display: block; }
-
-#results-panel .period { font-size: 48px; text-align: center; margin: 15px 0; }
-
+#results-panel .time,
+#results-panel .costs { margin: 0 0 12px; }
+#results-panel .calculations { font-size: 16px; }
+#results-panel .result { font-size: 40px; }
 
 #panic { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #400; font-size: 20px; }
 body.panic #panic { display: block; }
