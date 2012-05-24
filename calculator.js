@@ -195,7 +195,7 @@ Me.prototype =
 		sentence += ' = ' + spentHours * 60 + ' + ' + spentMinutes
 		sentence += ' = ' + spent + ' ' + spent.plural('минута', 'минуты', 'минут')
 		
-		nodes.time.firstChild.nodeValue = sentence
+		nodes.time.textContent = sentence
 		
 		var add = 0
 		if (spent < 60)
@@ -207,7 +207,7 @@ Me.prototype =
 		
 		var sentence = spent + ' ' + spent.plural('рубль', 'рубля', 'рублей') + ' + ' + add + ' ' + add.plural('рубль', 'рубля', 'рублей')
 		sentence += ' = ' + costs + ' ' + costs.plural('рубль', 'рубля', 'рублей')
-		nodes.costs.firstChild.nodeValue = sentence
+		nodes.costs.textContent = sentence
 	},
 	
 	calculateTimeSpent: function (sh, sm, eh, em)
@@ -282,24 +282,24 @@ Me.prototype =
 		var node = nodes.hours
 		if (h == -1)
 		{
-			node.firstChild.nodeValue = '00'
+			node.textContent = '−−'
 			node.classList.remove('chosen')
 		}
 		else
 		{
-			node.firstChild.nodeValue = h
+			node.textContent = h
 			node.classList.add('chosen')
 		}
 		
 		var node = nodes.minutes
 		if (m == -1)
 		{
-			node.firstChild.nodeValue = '00'
+			node.textContent = '−−'
 			node.classList.remove('chosen')
 		}
 		else
 		{
-			node.firstChild.nodeValue = m < 10 ? '0' + m : m
+			node.textContent = m < 10 ? '0' + m : m
 			node.classList.add('chosen')
 		}
 	}
