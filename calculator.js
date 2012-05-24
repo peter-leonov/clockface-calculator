@@ -238,22 +238,43 @@ Me.prototype =
 			spentHours = (spent - spentMinutes) / 60
 		
 		var sentence = spentHours + ' ' + spentHours.plural('час', 'часа', 'часов') + ' ' + spentMinutes + ' ' + spentMinutes.plural('минута', 'минуты', 'минут')
-		sentence += ' = ' + spentHours * 60 + ' + ' + spentMinutes
-		sentence += ' = ' + spent + ' ' + spent.plural('минута', 'минуты', 'минут')
+		sentence += ' = ' + spentHours * 60 + ' + ' + spentMinutes + ' ='
 		
-		nodes.time.textContent = sentence
+		nodes.time.calculations.textContent = sentence
+		nodes.time.result.textContent = spent + ' ' + spent.plural('минута', 'минуты', 'минут')
+		
+		this.renderPersons(spent)
+	},
+	
+	renderPersons: function (minutes)
+	{
+		var nodes = this.nodes
 		
 		var add = 0
-		if (spent < 60)
-			add = spent
+		if (minutes < 60)
+			add = minutes
 		else
 			add = 60
 		
-		var costs = spent + add
+		var costs = minutes + add
 		
-		var sentence = spent + ' ' + spent.plural('рубль', 'рубля', 'рублей') + ' + ' + add + ' ' + add.plural('рубль', 'рубля', 'рублей')
-		sentence += ' = ' + costs + ' ' + costs.plural('рубль', 'рубля', 'рублей')
-		nodes.costs.textContent = sentence
+		var sentence = minutes + ' ' + minutes.plural('рубль', 'рубля', 'рублей') + ' + ' + add + ' ' + add.plural('рубль', 'рубля', 'рублей') + ' ='
+		
+		nodes.costs.calculations.textContent = sentence
+		nodes.costs.result.textContent = costs + ' ' + costs.plural('рубль', 'рубля', 'рублей')
+		
+		var persons = nodes.persons
+		
+		var child
+		while (child = persons.firstChild)
+			persons.removeChild(child)
+		
+		for (var i = 2; i <= 12; i++)
+		{
+			var li = document.createElement('li')
+			li.textContent = i + ' ' + i.plural('гость', 'гостя', 'гостей') + ': ' + (costs * i)
+			nodes.persons.appendChild(li)
+		}
 	},
 	
 	calculateTimeSpent: function (sh, sm, eh, em)
@@ -382,8 +403,17 @@ var nodes =
 		minutes: $('#time-panel .period .end .minutes')
 	},
 	
-	time: $('#results-panel .time'),
-	costs: $('#results-panel .costs')
+	time:
+	{
+		calculations: $('#results-panel .time .calculations'),
+		result: $('#results-panel .time .result')
+	},
+	costs:
+	{
+		calculations: $('#results-panel .costs .calculations'),
+		result: $('#results-panel .costs .result')
+	},
+	persons: $('#results-panel .persons')
 }
 
 var widget = new Calculator()

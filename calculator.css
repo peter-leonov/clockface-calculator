@@ -72,8 +72,12 @@ a { color: #8af; }
 #clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
 
 
-#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 100px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
+#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 80px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
 body.results #results-panel { display: block; }
+#results-panel .time,
+#results-panel .costs { margin: 0 0 12px; }
+#results-panel .calculations { font-size: 16px; }
+#results-panel .result { font-size: 40px; }
 
 #panic { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #400; font-size: 20px; }
 body.panic #panic { display: block; }
