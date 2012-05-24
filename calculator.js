@@ -52,11 +52,45 @@ Me.prototype =
 		
 		this.bindClockface()
 		this.bindHoursSwitcher()
+		this.bindResultsPanel()
 		
 		var me = this
-		// nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
 		this.updateCurrentHour()
 		window.setInterval(function () { me.updateCurrentHour() }, 60000)
+	},
+	
+	bindResultsPanel: function ()
+	{
+		var node = this.nodes.resultsPanel
+		var me = this
+		
+		var y, scrolling
+		function touchstart (e)
+		{
+			y = window.pageYOffset
+		}
+		
+		function touchend (e)
+		{
+			if (scrolling)
+				return
+			
+			if (y == window.pageYOffset)
+				me.reset()
+			else
+				scrolling = true
+		}
+		
+		var timer
+		function scrollend (e)
+		{
+			window.clearTimeout(timer)
+			timer = window.setTimeout(function () { scrolling = false }, 250)
+		}
+		
+		node.addEventListener('touchstart', touchstart, false)
+		node.addEventListener('touchend', touchend, false)
+		window.addEventListener('scroll', scrollend, false)
 	},
 	
 	bindClockface: function ()
