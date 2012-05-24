@@ -18,6 +18,8 @@ body { width: 320px; margin: 0 auto; position: relative; min-height: 100%; }
 
 html, body { color: #fff; }
 
+.hidden { display: none; }
+
 a { color: #8af; }
 
 .clock .sep { color: #aaa; }

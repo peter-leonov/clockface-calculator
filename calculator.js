@@ -50,9 +50,12 @@ Me.prototype =
 		this.endClock = new Me.Clock(nodes.endClock)
 		
 		this.bindClockface()
+		this.bindHoursSwitcher()
 		
 		var me = this
 		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
+		this.updateCurrentHour()
+		window.setInterval(function () { me.updateCurrentHour() }, 60000)
 	},
 	
 	bindClockface: function ()
@@ -102,6 +105,27 @@ Me.prototype =
 		nodes.clockface.addEventListener('touchmove', move, false)
 		nodes.clockface.addEventListener('touchstart', start, false)
 		nodes.clockface.addEventListener('touchend', end, false)
+	},
+	
+	bindHoursSwitcher: function ()
+	{
+		var hoursArray = Array.prototype.slice.apply(this.nodes.hoursButtons)
+		hoursArray = [].concat(hoursArray, hoursArray, hoursArray)
+		
+		this.hoursArray = hoursArray
+	},
+	
+	updateCurrentHour: function ()
+	{
+		var h = new Date().getHours()
+		console.log(h)
+		var hoursArray = this.hoursArray
+		
+		h += 24
+		for (var i = 0; i <= 12; i++)
+			hoursArray[h + i + 1].classList.add('hidden')
+		for (var i = 0; i < 12; i++)
+			hoursArray[h - i].classList.remove('hidden')
 	},
 	
 	renderClock: function ()
