@@ -26,11 +26,11 @@ a { color: #8af; }
 .clock .hours.chosen { color: #8f8; }
 .clock .minutes.chosen { color: #88f; }
 
-#time-panel { position: relative; overflow: hidden; height: 460px; z-index: 1; -webkit-user-select: none; }
+#time-panel { position: relative; overflow: hidden; height: 480px; z-index: 1; -webkit-user-select: none; }
 
 #time-panel .period { font-size: 50px; text-align: center; margin: 30px 0 15px; }
 
-#clockface { position: relative; width: 320px; height: 354px; }
+#clockface { position: relative; width: 320px; height: 358px; }
 #clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .hours .button.selected,
 #clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }
