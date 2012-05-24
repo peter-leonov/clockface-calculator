@@ -27,7 +27,8 @@ a { color: #8af; }
 .clock .minutes.chosen { color: #88f; }
 
 #time-panel { position: relative; overflow: hidden; height: 460px; z-index: 1; -webkit-user-select: none; }
-#time-panel .start-time { font-size: 65px; width: 165px; margin: 10px 82px 15px auto; text-align: right; }
+
+#time-panel .period { font-size: 48px; text-align: center; margin: 15px 0; }
 
 #clockface { position: relative; width: 320px; height: 354px; }
 #clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
@@ -41,7 +42,6 @@ a { color: #8af; }
 #clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
 #clockface .minutes .button { background-color: #334; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
 #clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
-
 
 #clockface .hours .button.n0    { left: 134px; top: 50px; }
 #clockface .hours .button.n1    { left: 186px; top: 50px; }
@@ -69,15 +69,11 @@ a { color: #8af; }
 #clockface .minutes .button.n50 { left: 0px;   top:  61px; }
 #clockface .minutes .button.n55 { left: 44px;  top: -3px; }
 
-
 #clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
 
 
-#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 0; right: 0; bottom: 0; background-color: #000; }
+#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 70px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
 body.results #results-panel { display: block; }
-
-#results-panel .period { font-size: 48px; text-align: center; margin: 15px 0; }
-
 
 #panic { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #400; font-size: 20px; }
 body.panic #panic { display: block; }

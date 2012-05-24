@@ -45,7 +45,6 @@ Me.prototype =
 		// disable scrolling
 		nodes.timePanel.addEventListener('touchstart', function (e) { e.preventDefault() }, false)
 		
-		this.mainClock = new Me.Clock(nodes.mainClock)
 		this.startClock = new Me.Clock(nodes.startClock)
 		this.endClock = new Me.Clock(nodes.endClock)
 		
@@ -53,7 +52,7 @@ Me.prototype =
 		this.bindHoursSwitcher()
 		
 		var me = this
-		nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
+		// nodes.resultsPanel.addEventListener('touchend', function (e) { me.reset() }, false)
 		this.updateCurrentHour()
 		window.setInterval(function () { me.updateCurrentHour() }, 60000)
 	},
@@ -127,11 +126,6 @@ Me.prototype =
 			hoursArray[h - i].classList.remove('hidden')
 	},
 	
-	renderClock: function ()
-	{
-		this.mainClock.time(this.hours, this.minutes)
-	},
-	
 	hoursChosen: function (node)
 	{
 		if (this.lastHourNode)
@@ -142,7 +136,7 @@ Me.prototype =
 		var v = +node.dataset.value
 		this.hours = v
 		
-		this.renderClock()
+		this.startClock.time(this.hours, this.minutes)
 	},
 	
 	minutesChosen: function (node)
@@ -155,7 +149,7 @@ Me.prototype =
 		var v = +node.dataset.value
 		this.minutes = v
 		
-		this.renderClock()
+		this.startClock.time(this.hours, this.minutes)
 	},
 	
 	timeChosen: function (ok)
@@ -236,7 +230,7 @@ Me.prototype =
 	{
 		this.minutes = -1
 		this.hours = -1
-		this.renderClock()
+		this.startClock.time(-1, -1)
 		
 		this.lastMinuteNode.classList.remove('selected')
 		this.lastMinuteNode = null
@@ -326,25 +320,19 @@ var nodes =
 	timePanel: $('#time-panel'),
 	clockface: $('#clockface'),
 	
-	mainClock:
-	{
-		hours: $('#time-panel .start-time .clock .hours'),
-		minutes: $('#time-panel .start-time .clock .minutes')
-	},
-	
 	hoursButtons: $$('#clockface .hours .button'),
 	minutesButtons: $$('#clockface .minutes .button'),
 	
 	resultsPanel: $('#results-panel'),
 	startClock:
 	{
-		hours: $('#results-panel .start .hours'),
-		minutes: $('#results-panel .start .minutes')
+		hours: $('#time-panel .period .start .hours'),
+		minutes: $('#time-panel .period .start .minutes')
 	},
 	endClock:
 	{
-		hours: $('#results-panel .end .hours'),
-		minutes: $('#results-panel .end .minutes')
+		hours: $('#time-panel .period .end .hours'),
+		minutes: $('#time-panel .period .end .minutes')
 	},
 	
 	time: $('#results-panel .time'),
