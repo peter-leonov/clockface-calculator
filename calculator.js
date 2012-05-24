@@ -47,6 +47,8 @@ Me.prototype =
 		
 		this.startClock = new Me.Clock(nodes.startClock)
 		this.endClock = new Me.Clock(nodes.endClock)
+		this.startClock.time(-1, -1)
+		this.endClock.time(-1, -1)
 		
 		this.bindClockface()
 		this.bindHoursSwitcher()
@@ -231,6 +233,7 @@ Me.prototype =
 		this.minutes = -1
 		this.hours = -1
 		this.startClock.time(-1, -1)
+		this.endClock.time(-1, -1)
 		
 		this.lastMinuteNode.classList.remove('selected')
 		this.lastMinuteNode = null
@@ -282,7 +285,7 @@ Me.prototype =
 		var node = nodes.hours
 		if (h == -1)
 		{
-			node.textContent = '−−'
+			node.textContent = '00'
 			node.classList.remove('chosen')
 		}
 		else
@@ -294,7 +297,7 @@ Me.prototype =
 		var node = nodes.minutes
 		if (m == -1)
 		{
-			node.textContent = '−−'
+			node.textContent = '00'
 			node.classList.remove('chosen')
 		}
 		else
