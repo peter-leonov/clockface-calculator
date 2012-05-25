@@ -39,16 +39,16 @@ html.in-browser body.results #time-panel .period { display: block; }
 html.in-browser body.results #clockface { display: none; }
 #clockface .face { position: relative; width: 320px; height: 358px; margin-top: 84px; }
 html.in-browser #clockface .face { margin-top: 30px; }
-#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #000; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
+#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #000; border-radius: 25px; text-align: center; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .hours .button.selected,
-#clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }
+#clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; text-shadow: none; }
 
 #clockface .button.selected.teen { text-indent: -3px; }
 #clockface .button.teen { text-indent: -2px; }
 
-#clockface .hours .button { background-color: #353; width: 47px; height: 47px; border-color: #132013; border-width: 1px; line-height: 45px; }
+#clockface .hours .button { background-color: #353; width: 47px; height: 47px; border-color: #132013; border-width: 1px; font-size: 30px; line-height: 45px; }
 #clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
-#clockface .minutes .button { background-color: #446; width: 39px; height: 39px; border-color: #191926; border-width: 6px; line-height: 40px; }
+#clockface .minutes .button { background-color: #446; width: 39px; height: 39px; border-color: #191926; border-width: 6px; font-size: 20px; line-height: 40px; }
 #clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
 
 #clockface .hours .button.n0    { left: 134px; top: 59px; }
