@@ -30,10 +30,14 @@ a { color: #8af; }
 #time-panel { position: relative; overflow: hidden; height: 480px; z-index: 1; -webkit-user-select: none; }
 
 #time-panel .period { font-size: 52px; text-align: center; margin: 20px 0 20px; }
+html.in-browser #time-panel .period { display: none; margin: 10px 0 20px; }
+html.in-browser body.results #time-panel .period { display: block; }
 #time-panel .period .dash { color: #888; margin: 0 -2px; }
 
 #clockface { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+html.in-browser body.results #clockface { display: none; }
 #clockface .face { position: relative; width: 320px; height: 358px; margin-top: 105px; }
+html.in-browser #clockface .face { margin-top: 30px; }
 #clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .hours .button.selected,
 #clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }

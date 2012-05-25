@@ -20,6 +20,9 @@ Number.prototype.plural = function (a, b, c)
 	return c
 }
 
+if (!window.navigator.standalone)
+	document.documentElement.classList.add('in-browser')
+
 $('#clockface .reset').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
 
 // function log (msg)
@@ -65,6 +68,8 @@ Me.prototype =
 		this.updateCurrentHour()
 		window.setInterval(function () { me.updateCurrentHour() }, 60000)
 		window.addEventListener('pageshow', function () { me.updateCurrentHour() }, false)
+		
+		this.reset()
 	},
 	
 	bindResultsPanel: function ()
@@ -305,12 +310,20 @@ Me.prototype =
 		this.startClock.time(-1, -1)
 		this.endClock.time(-1, -1)
 		
-		this.lastMinuteNode.classList.remove('selected')
-		this.lastMinuteNode = null
-		this.lastHourNode.classList.remove('selected')
-		this.lastHourNode = null
+		if (this.lastMinuteNode)
+		{
+			this.lastMinuteNode.classList.remove('selected')
+			this.lastMinuteNode = null
+		}
+		if (this.lastHourNode)
+		{
+			this.lastHourNode.classList.remove('selected')
+			this.lastHourNode = null
+		}
 		
 		this.nodes.root.classList.remove('results')
+		
+		window.scrollTo(0, 0)
 	},
 	
 	makeTest: function ()
