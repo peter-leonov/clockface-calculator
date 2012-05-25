@@ -38,9 +38,9 @@ a { color: #8af; }
 #clockface .button.selected.teen { text-indent: -3px; }
 #clockface .button.teen { text-indent: -2px; }
 
-#clockface .hours .button { background-color: #343; width: 47px; height: 47px; border-width: 1px; line-height: 45px; }
+#clockface .hours .button { background-color: #353; width: 47px; height: 47px; border-width: 1px; line-height: 45px; }
 #clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
-#clockface .minutes .button { background-color: #334; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
+#clockface .minutes .button { background-color: #446; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
 #clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
 
 #clockface .hours .button.n0    { left: 134px; top: 38px; }
