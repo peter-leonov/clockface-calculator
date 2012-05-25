@@ -441,3 +441,10 @@ widget.bind(nodes)
 }
 
 window.addEventListener('load', ready, false)
+
+if (!/mobile/i.test(window.navigator.userAgent))
+{
+	var script = document.createElement('script')
+	script.src = 'mouse-to-touch.js'
+	document.body.appendChild(script)
+}
