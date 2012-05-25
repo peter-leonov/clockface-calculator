@@ -22,7 +22,7 @@ html, body { color: #fff; }
 
 a { color: #8af; }
 
-.clock { display: inline-block; width: 125px; text-align: right; }
+.clock { display: inline-block; width: 130px; text-align: right; }
 .clock .sep { color: #aaa; }
 .clock .hours.chosen { color: #8f8; }
 .clock .minutes.chosen { color: #88f; }
@@ -30,10 +30,10 @@ a { color: #8af; }
 #time-panel { position: relative; overflow: hidden; height: 480px; z-index: 1; -webkit-user-select: none; }
 
 #time-panel .period { font-size: 52px; text-align: center; margin: 20px 0 20px; }
-#time-panel .period .dash { color: #888; margin: 0 -2px 0 0; }
+#time-panel .period .dash { color: #888; margin: 0 -2px; }
 
 #clockface { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
-#clockface .face { position: relative; width: 320px; height: 358px; margin-top: 100px; }
+#clockface .face { position: relative; width: 320px; height: 358px; margin-top: 105px; }
 #clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .hours .button.selected,
 #clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }
@@ -75,13 +75,13 @@ a { color: #8af; }
 #clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
 
 
-#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 70px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
+#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 70px; right: 0; bottom: 0; padding: 10px; background-color: #000; color: #ccc; }
 body.results #results-panel { display: block; }
 #results-panel .glass { position: absolute; left: 0; top: -70px; right: 0; height: 70px; }
 #results-panel .time,
-#results-panel .costs { margin: 0 0 12px; }
+#results-panel .costs { margin: 0 0 10px; }
 #results-panel .calculations { font-size: 16px; }
-#results-panel .result { font-size: 40px; }
+#results-panel .result { font-size: 40px; color: #fff; }
 
 #panic { display: none; position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: #400; font-size: 20px; }
 body.panic #panic { display: block; }
