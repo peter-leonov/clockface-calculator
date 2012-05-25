@@ -29,7 +29,8 @@ a { color: #8af; }
 
 #time-panel { position: relative; overflow: hidden; height: 480px; z-index: 1; -webkit-user-select: none; }
 
-#time-panel .period { font-size: 50px; text-align: center; margin: 20px 0 20px; }
+#time-panel .period { font-size: 52px; text-align: center; margin: 20px 0 20px; }
+#time-panel .period .dash { color: #888; margin: 0 -2px 0 0; }
 
 #clockface { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
 #clockface .face { position: relative; width: 320px; height: 358px; margin-top: 100px; }
