@@ -438,6 +438,9 @@ var nodes =
 var widget = new Calculator()
 widget.bind(nodes)
 
+document.body.classList.remove('hidden')
+document.getElementById('viewport').setAttribute('content', 'user-scalable=no, initial-scale=1.0, width=device-width')
+
 }
 
 window.addEventListener('load', ready, false)
