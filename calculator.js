@@ -95,7 +95,7 @@ Me.prototype =
 		function scrollend (e)
 		{
 			window.clearTimeout(timer)
-			timer = window.setTimeout(function () { scrolling = false }, 250)
+			timer = window.setTimeout(function () { scrolling = false }, 100)
 		}
 		
 		node.addEventListener('touchstart', touchstart, false)
