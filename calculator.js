@@ -20,7 +20,7 @@ Number.prototype.plural = function (a, b, c)
 	return c
 }
 
-if (!window.navigator.standalone)
+if (window.navigator.standalone === false)
 	document.documentElement.classList.add('in-browser')
 
 $('#clockface .reset').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
