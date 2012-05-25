@@ -43,26 +43,26 @@ a { color: #8af; }
 #clockface .minutes .button { background-color: #334; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
 #clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
 
-#clockface .hours .button.n0    { left: 134px; top: 50px; }
+#clockface .hours .button.n0    { left: 134px; top: 38px; }
 #clockface .hours .button.n1    { left: 186px; top: 50px; }
 #clockface .hours .button.n2    { left: 218px; top: 99px; }
 #clockface .hours .button.n3    { left: 213px; top: 151px; }
 #clockface .hours .button.n4    { left: 218px; top: 203px; }
 #clockface .hours .button.n5    { left: 186px; top: 252px; }
-#clockface .hours .button.n6    { left: 134px; top: 252px; }
+#clockface .hours .button.n6    { left: 134px; top: 264px; }
 #clockface .hours .button.n7    { left:  82px; top: 252px; }
 #clockface .hours .button.n8    { left:  50px; top: 203px; }
 #clockface .hours .button.n9    { left:  55px; top: 151px; }
 #clockface .hours .button.n10   { left:  50px; top:  99px; }
 #clockface .hours .button.n11   { left:  82px; top:  50px; }
 
-#clockface .minutes .button.n0  { left: 134px; top: -3px; }
+#clockface .minutes .button.n0  { left: 134px; top: -21px; }
 #clockface .minutes .button.n5  { left: 225px; top: -3px; }
 #clockface .minutes .button.n10 { left: 269px; top:  61px; }
 #clockface .minutes .button.n15 { left: 269px; top:  151px; }
 #clockface .minutes .button.n20 { left: 269px; top:  241px; }
 #clockface .minutes .button.n25 { left: 225px; top:  306px; }
-#clockface .minutes .button.n30 { left: 134px; top:  306px; }
+#clockface .minutes .button.n30 { left: 134px; top:  324px; }
 #clockface .minutes .button.n35 { left: 44px;  top:  306px; }
 #clockface .minutes .button.n40 { left: 0px;   top:  241px; }
 #clockface .minutes .button.n45 { left: 0px;   top:  151px; }
@@ -72,7 +72,7 @@ a { color: #8af; }
 #clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
 
 
-#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 80px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
+#results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 70px; right: 0; bottom: 0; padding: 10px; background-color: #000; }
 body.results #results-panel { display: block; }
 #results-panel .time,
 #results-panel .costs { margin: 0 0 12px; }
