@@ -72,14 +72,18 @@ Me.prototype =
 		var node = this.nodes.resultsPanel
 		var me = this
 		
-		var scrolling, skip
+		var y, scrolling, skip
 		function touchstart (e)
 		{
+			y = e.pageY
 			skip = scrolling
 		}
 		
 		function touchmove (e)
 		{
+			if (Math.abs(y - e.pageY) < 10)
+				return
+			
 			skip = scrolling = true
 		}
 		
