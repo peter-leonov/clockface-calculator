@@ -64,6 +64,7 @@ Me.prototype =
 		var me = this
 		this.updateCurrentHour()
 		window.setInterval(function () { me.updateCurrentHour() }, 60000)
+		window.addEventListener('pageshow', function () { me.updateCurrentHour() }, false)
 	},
 	
 	bindResultsPanel: function ()
