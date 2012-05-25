@@ -35,48 +35,49 @@ html.in-browser body.results #time-panel .period { display: block; }
 #time-panel .period .dash { color: #888; margin: 0 -2px; }
 
 #clockface { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+#clockface .bg { position: absolute; z-index: -1;  left: 0; top: 0; width: 320px; height: 396px; }
 html.in-browser body.results #clockface { display: none; }
-#clockface .face { position: relative; width: 320px; height: 358px; margin-top: 105px; }
+#clockface .face { position: relative; width: 320px; height: 358px; margin-top: 84px; }
 html.in-browser #clockface .face { margin-top: 30px; }
-#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #0a0a0a; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
+#clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #000; border-radius: 25px; text-align: center; font-size: 27px; line-height: 43px; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .hours .button.selected,
 #clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; }
 
 #clockface .button.selected.teen { text-indent: -3px; }
 #clockface .button.teen { text-indent: -2px; }
 
-#clockface .hours .button { background-color: #353; width: 47px; height: 47px; border-width: 1px; line-height: 45px; }
+#clockface .hours .button { background-color: #353; width: 47px; height: 47px; border-color: #132013; border-width: 1px; line-height: 45px; }
 #clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
-#clockface .minutes .button { background-color: #446; width: 39px; height: 39px; border-width: 6px; line-height: 40px; }
+#clockface .minutes .button { background-color: #446; width: 39px; height: 39px; border-color: #191926; border-width: 6px; line-height: 40px; }
 #clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
 
-#clockface .hours .button.n0    { left: 134px; top: 38px; }
-#clockface .hours .button.n1    { left: 186px; top: 50px; }
-#clockface .hours .button.n2    { left: 218px; top: 99px; }
-#clockface .hours .button.n3    { left: 213px; top: 151px; }
-#clockface .hours .button.n4    { left: 218px; top: 203px; }
-#clockface .hours .button.n5    { left: 186px; top: 252px; }
-#clockface .hours .button.n6    { left: 134px; top: 264px; }
-#clockface .hours .button.n7    { left:  82px; top: 252px; }
-#clockface .hours .button.n8    { left:  50px; top: 203px; }
-#clockface .hours .button.n9    { left:  55px; top: 151px; }
-#clockface .hours .button.n10   { left:  50px; top:  99px; }
-#clockface .hours .button.n11   { left:  82px; top:  50px; }
+#clockface .hours .button.n0    { left: 134px; top: 59px; }
+#clockface .hours .button.n1    { left: 186px; top: 71px; }
+#clockface .hours .button.n2    { left: 218px; top: 120px; }
+#clockface .hours .button.n3    { left: 213px; top: 172px; }
+#clockface .hours .button.n4    { left: 218px; top: 224px; }
+#clockface .hours .button.n5    { left: 186px; top: 273px; }
+#clockface .hours .button.n6    { left: 134px; top: 285px; }
+#clockface .hours .button.n7    { left:  82px; top: 273px; }
+#clockface .hours .button.n8    { left:  50px; top: 224px; }
+#clockface .hours .button.n9    { left:  55px; top: 172px; }
+#clockface .hours .button.n10   { left:  50px; top: 120px; }
+#clockface .hours .button.n11   { left:  82px; top: 71px; }
 
-#clockface .minutes .button.n0  { left: 134px; top: -21px; }
-#clockface .minutes .button.n5  { left: 225px; top: -3px; }
-#clockface .minutes .button.n10 { left: 269px; top:  61px; }
-#clockface .minutes .button.n15 { left: 269px; top:  151px; }
-#clockface .minutes .button.n20 { left: 269px; top:  241px; }
-#clockface .minutes .button.n25 { left: 225px; top:  306px; }
-#clockface .minutes .button.n30 { left: 134px; top:  324px; }
-#clockface .minutes .button.n35 { left: 44px;  top:  306px; }
-#clockface .minutes .button.n40 { left: 0px;   top:  241px; }
-#clockface .minutes .button.n45 { left: 0px;   top:  151px; }
-#clockface .minutes .button.n50 { left: 0px;   top:  61px; }
-#clockface .minutes .button.n55 { left: 44px;  top: -3px; }
+#clockface .minutes .button.n0  { left: 134px; top: 0; }
+#clockface .minutes .button.n5  { left: 225px; top: 18px; }
+#clockface .minutes .button.n10 { left: 269px; top: 82px; }
+#clockface .minutes .button.n15 { left: 269px; top: 172px; }
+#clockface .minutes .button.n20 { left: 269px; top: 262px; }
+#clockface .minutes .button.n25 { left: 225px; top: 327px; }
+#clockface .minutes .button.n30 { left: 134px; top: 345px; }
+#clockface .minutes .button.n35 { left: 44px;  top: 327px; }
+#clockface .minutes .button.n40 { left: 0px;   top: 262px; }
+#clockface .minutes .button.n45 { left: 0px;   top: 172px; }
+#clockface .minutes .button.n50 { left: 0px;   top: 82px; }
+#clockface .minutes .button.n55 { left: 44px;  top: 18px; }
 
-#clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 130px; border-radius: 20px; background-color: #111; }
+#clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 151px; border-radius: 20px; background-color: #111; }
 
 
 #results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 70px; right: 0; bottom: 0; padding: 10px; background-color: #000; color: #ccc; }
