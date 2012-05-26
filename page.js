@@ -2,9 +2,19 @@ function $ (q) { return document.querySelector(q) }
 function $$ (q) { return document.querySelectorAll(q) }
 $.load = function (src)
 {
-	var script = document.createElement('script')
-	script.src = src
-	document.body.appendChild(script)
+	var r = new XMLHttpRequest()
+	r.open('GET', src, false)
+	r.onreadystatechange = function ()
+	{
+		if (this.readyState != 4)
+			return
+		
+		var script = document.createElement('script')
+		document.body.appendChild(script)
+		script.text = this.responseText
+	}
+	r.send(null)
+	
 }
 
 // function log (msg)
