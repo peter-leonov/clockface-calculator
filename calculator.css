@@ -3,7 +3,7 @@ h1,h2,h3,h4,h5,h6
 p,form,
 fieldset,legend,
 ol,ul,li,dl,dt,dd{margin:0;padding:0;border:0;font-weight:normal;list-style:none;}
-img{vertical-align:middle;}
+img{vertical-align:middle;border:none;}
 a{cursor:pointer;text-decoration:none;color:inherit;}
 a img{border:0;}
 input,select,textarea{font:inherit;}
