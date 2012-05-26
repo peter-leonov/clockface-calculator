@@ -1,5 +1,11 @@
 function $ (q) { return document.querySelector(q) }
 function $$ (q) { return document.querySelectorAll(q) }
+$.load = function (src)
+{
+	var script = document.createElement('script')
+	script.src = src
+	document.body.appendChild(script)
+}
 
 // function log (msg)
 // {
@@ -68,9 +74,9 @@ document.getElementById('viewport').setAttribute('content', 'user-scalable=no, i
 
 window.addEventListener('load', ready, false)
 
+
 if (!/mobile/i.test(window.navigator.userAgent))
-{
-	var script = document.createElement('script')
-	script.src = 'mouse-to-touch.js'
-	document.body.appendChild(script)
-}
+	$.load('mouse-to-touch.js')
+
+if (!document.body.classList)
+	$.load('class-list.js')

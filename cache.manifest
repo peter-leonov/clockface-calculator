@@ -1,10 +1,11 @@
 CACHE MANIFEST
 
-# 12
+# 13
 
 apple-touch-icon.png
 calculator.css
 page.js
 calculator.js
 mouse-to-touch.js
+class-list.js
 clockface-back.png
