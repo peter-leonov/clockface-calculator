@@ -43,7 +43,7 @@ ClassList.prototype =
 		return cn
 	},
 	
-	has: function (cn)
+	contains: function (cn)
 	{
 		var node = this.node
 		
@@ -67,7 +67,7 @@ ClassList.prototype =
 	
 	toggle: function (cn)
 	{
-		if (this.has(cn))
+		if (this.contains(cn))
 			this.remove(cn)
 		else
 			this.add(cn)
