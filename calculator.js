@@ -148,6 +148,8 @@ Me.prototype =
 				if (!node || node == lastNode)
 					continue
 				
+				lastNode = node
+				
 				var ne = document.createEvent('Event')
 				ne.initEvent('touchover', true, true)
 				// ne.target = node
