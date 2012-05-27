@@ -50,9 +50,10 @@ Me.prototype =
 		this.bindResultsPanel()
 		
 		var me = this
-		this.updateCurrentHour()
 		window.setInterval(function () { me.updateCurrentHour() }, 60000)
 		window.addEventListener('pageshow', function () { me.updateCurrentHour() }, false)
+		
+		nodes.rotate.addEventListener('touchstart', function (e) { me.rotate() }, false)
 		
 		this.reset()
 	},
@@ -158,21 +159,32 @@ Me.prototype =
 	bindHoursSwitcher: function ()
 	{
 		var hoursArray = Array.prototype.slice.apply(this.nodes.hoursButtons)
-		hoursArray = [].concat(hoursArray, hoursArray, hoursArray)
+		hoursArray = [].concat(hoursArray, hoursArray, hoursArray, hoursArray)
 		
 		this.hoursArray = hoursArray
 	},
 	
 	updateCurrentHour: function ()
 	{
-		var h = new Date().getHours()
-		h += 24
+		this.renderCurrentHour(new Date().getHours())
+	},
+	
+	renderCurrentHour: function (h)
+	{
+		h += this.rotated ? 36 : 24
 		
 		var hoursArray = this.hoursArray
 		for (var i = 0; i <= 12; i++)
 			hoursArray[h + i + 1].classList.add('hidden')
 		for (var i = 0; i < 12; i++)
 			hoursArray[h - i].classList.remove('hidden')
+	},
+	
+	rotate: function ()
+	{
+		this.reset()
+		this.rotated = !this.rotated
+		this.updateCurrentHour()
 	},
 	
 	hoursHovered: function (node)
@@ -308,6 +320,9 @@ Me.prototype =
 		this.hours = -1
 		this.startClock.time(-1, -1)
 		this.endClock.time(-1, -1)
+		
+		this.timeChosen(false)
+		this.updateCurrentHour()
 		
 		if (this.lastMinuteNode)
 		{

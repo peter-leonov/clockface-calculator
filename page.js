@@ -45,6 +45,7 @@ var nodes =
 	
 	timePanel: $('#time-panel'),
 	clockface: $('#clockface'),
+	rotate: $('#clockface .rotate'),
 	
 	hoursButtons: $$('#clockface .hours .button'),
 	minutesButtons: $$('#clockface .minutes .button'),

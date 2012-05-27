@@ -77,7 +77,7 @@ html.in-browser #clockface .face { margin-top: 10px; }
 #clockface .minutes .button.n50 { left: 0px;   top: 82px; }
 #clockface .minutes .button.n55 { left: 44px;  top: 18px; }
 
-#clockface .reset { position: absolute; width: 60px; height: 90px; left: 130px; top: 151px; border-radius: 20px; background-color: #111; color: #222; font-size: 30px; line-height: 85px; text-align: center; }
+#clockface .rotate { position: absolute; width: 60px; height: 90px; left: 130px; top: 151px; border-radius: 20px; background-color: #222; color: #000; font-size: 55px; line-height: 95px; text-align: center; cursor: pointer; font-weight: bold; }
 
 
 #results-panel { display: none; position: absolute; z-index: 2; left: 0; top: 70px; right: 0; bottom: 0; padding: 10px; background-color: #000; color: #ccc; }
