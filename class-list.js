@@ -63,6 +63,14 @@ ClassList.prototype =
 		}
 		
 		return rex.test(className)
+	},
+	
+	toggle: function (cn)
+	{
+		if (this.has(cn))
+			this.remove(cn)
+		else
+			this.add(cn)
 	}
 }
 
