@@ -30,7 +30,7 @@ function preload ()
 	if (window.navigator.standalone === false)
 		document.documentElement.classList.add('in-browser')
 	
-	$('#clockface .reset').addEventListener('touchstart', function (e) { window.location.reload(true) }, false)
+	document.addEventListener('touchstart', function (e) { if (e.touches.length == 3) window.location.reload(true) }, false)
 }
 
 
