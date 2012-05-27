@@ -116,9 +116,8 @@ Me.prototype =
 				return
 			
 			if (type == 'hour')
-				me.hoursChosen(node)
+				me.hoursHovered(target)
 			else
-				me.minutesChosen(node)
 		}
 		
 		function move (e)
@@ -129,6 +128,7 @@ Me.prototype =
 				var t = touches[i]
 				guess(t.pageX, t.pageY)
 			}
+				me.minutesHovered(target)
 		}
 		
 		function start (e)
@@ -167,7 +167,7 @@ Me.prototype =
 			hoursArray[h - i].classList.remove('hidden')
 	},
 	
-	hoursChosen: function (node)
+	hoursHovered: function (node)
 	{
 		if (this.lastHourNode == node)
 			return
@@ -183,7 +183,7 @@ Me.prototype =
 		this.startClock.time(this.hours, this.minutes)
 	},
 	
-	minutesChosen: function (node)
+	minutesHovered: function (node)
 	{
 		if (this.lastMinuteNode == node)
 			return
