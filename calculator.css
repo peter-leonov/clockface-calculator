@@ -26,6 +26,8 @@ a { color: #8af; }
 .clock .sep { color: #aaa; }
 .clock .hours.chosen { color: #8f8; }
 .clock .minutes.chosen { color: #88f; }
+#time-panel.rotated .period .start .hours.chosen { color: #f22; margin: 0 -2px; }
+
 
 #time-panel { position: relative; overflow: hidden; height: 480px; z-index: 1; -webkit-user-select: none; }
 
@@ -47,7 +49,9 @@ html.in-browser #clockface .face { margin-top: 10px; }
 #clockface .button.teen { text-indent: -2px; }
 
 #clockface .hours .button { background-color: #353; width: 47px; height: 47px; border-color: #132013; border-width: 1px; font-size: 30px; line-height: 45px; }
+#time-panel.rotated #clockface .hours .button { background-color: #722; }
 #clockface .hours .button.selected { background-color: #4f4; border-color: #4f4; color: #000; }
+#time-panel.rotated #clockface .hours .button.selected { background-color: #f22; border-color: #f22; color: #000; }
 #clockface .minutes .button { background-color: #446; width: 39px; height: 39px; border-color: #191926; border-width: 6px; font-size: 20px; line-height: 40px; }
 #clockface .minutes .button.selected { background-color: #68f; border-color: #68f; color: #000; }
 

@@ -82,7 +82,8 @@ Me.prototype =
 		{
 			if (scrolling || skip)
 				return
-				
+			
+			me.setClockRotation(false)
 			me.reset()
 		}
 		
@@ -183,8 +184,19 @@ Me.prototype =
 	rotate: function ()
 	{
 		this.reset()
-		this.rotated = !this.rotated
+		this.setClockRotation(!this.rotated)
+	},
+	
+	setClockRotation: function (rotated)
+	{
+		this.rotated = rotated
 		this.updateCurrentHour()
+		
+		var cl = this.nodes.timePanel.classList
+		if (this.rotated)
+			cl.add('rotated')
+		else
+			cl.remove('rotated')
 	},
 	
 	hoursHovered: function (node)
