@@ -103,13 +103,12 @@ Me.prototype =
 		var nodes = this.nodes
 		
 		var me = this
-		function guess (x, y)
+		
+		function over (e)
 		{
-			var node = document.elementFromPoint(x, y)
-			if (!node)
-				return
+			var target = e.target
 			
-			var data = node.dataset
+			var data = target.dataset
 			
 			var type = data.type
 			if (!type)
@@ -118,23 +117,13 @@ Me.prototype =
 			if (type == 'hour')
 				me.hoursHovered(target)
 			else
-		}
-		
-		function move (e)
-		{
-			var touches = e.touches
-			for (var i = 0, il = touches.length; i < il; i++)
-			{
-				var t = touches[i]
-				guess(t.pageX, t.pageY)
-			}
 				me.minutesHovered(target)
 		}
 		
 		function start (e)
 		{
 			me.timeChosen(false)
-			move(e)
+			over(e)
 		}
 		
 		function end (e)
@@ -142,9 +131,30 @@ Me.prototype =
 			me.timeChosen()
 		}
 		
-		nodes.clockface.addEventListener('touchmove', move, false)
+		
+		nodes.clockface.addEventListener('touchover', over, false)
 		nodes.clockface.addEventListener('touchstart', start, false)
 		nodes.clockface.addEventListener('touchend', end, false)
+		
+		var lastNode
+		function touchmove (e)
+		{
+			var touches = e.touches
+			for (var i = 0, il = touches.length; i < il; i++)
+			{
+				var t = touches[i]
+				
+				var node = document.elementFromPoint(t.pageX, t.pageY)
+				if (!node || node == lastNode)
+					continue
+				
+				var ne = document.createEvent('Event')
+				ne.initEvent('touchover', true, true)
+				// ne.target = node
+				node.dispatchEvent(ne)
+			}
+		}
+		nodes.clockface.addEventListener('touchmove', touchmove, false)
 	},
 	
 	bindHoursSwitcher: function ()
