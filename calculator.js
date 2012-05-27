@@ -108,9 +108,7 @@ Me.prototype =
 		{
 			var target = e.target
 			
-			var data = target.dataset
-			
-			var type = data.type
+			var type = target.dataset.type
 			if (!type)
 				return
 			
