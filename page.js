@@ -90,3 +90,6 @@ if (!/mobile/i.test(window.navigator.userAgent))
 
 if (!document.body.classList)
 	$.load('class-list.js')
+
+if (!document.body.dataset)
+	$.load('dataset.js')
