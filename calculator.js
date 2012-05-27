@@ -169,6 +169,9 @@ Me.prototype =
 	
 	hoursChosen: function (node)
 	{
+		if (this.lastHourNode == node)
+			return
+		
 		if (this.lastHourNode)
 				this.lastHourNode.classList.remove('selected')
 		node.classList.toggle('selected')
@@ -182,6 +185,9 @@ Me.prototype =
 	
 	minutesChosen: function (node)
 	{
+		if (this.lastMinuteNode == node)
+			return
+		
 		if (this.lastMinuteNode)
 				this.lastMinuteNode.classList.remove('selected')
 		node.classList.toggle('selected')
