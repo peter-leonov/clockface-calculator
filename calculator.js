@@ -110,6 +110,9 @@ Me.prototype =
 		{
 			var target = e.target
 			
+			if (target.nodeType == 3)
+				target = target.parentNode
+			
 			var type = target.dataset.type
 			if (!type)
 				return
