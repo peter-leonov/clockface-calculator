@@ -22,7 +22,7 @@ html, body { color: #fff; }
 
 a { color: #8af; }
 
-.clock { display: inline-block; width: 130px; text-align: right; }
+.clock { display: inline-block; width: 131px; text-align: right; }
 .clock .sep { color: #aaa; }
 .clock .hours.chosen { color: #8f8; }
 .clock .minutes.chosen { color: #88f; }
