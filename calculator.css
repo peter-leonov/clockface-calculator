@@ -38,7 +38,7 @@ html.in-browser body.results #time-panel .period { display: block; }
 #clockface .bg { position: absolute; z-index: -1;  left: 0; top: 0; width: 320px; height: 396px; }
 html.in-browser body.results #clockface { display: none; }
 #clockface .face { position: relative; width: 320px; height: 358px; margin-top: 84px; }
-html.in-browser #clockface .face { margin-top: 30px; }
+html.in-browser #clockface .face { margin-top: 10px; }
 #clockface .button { position: absolute; overflow: hidden; width: 45px; height: 45px; border: 3px solid #000; border-radius: 25px; text-align: center; color: #fff; text-shadow: 0 1px #000; cursor: pointer; }
 #clockface .hours .button.selected,
 #clockface .minutes .button.selected { color: #000; font-size: 36px; width: 51px; height: 51px; border-width: 0; text-indent: 3px; line-height: 52px; text-shadow: none; }
